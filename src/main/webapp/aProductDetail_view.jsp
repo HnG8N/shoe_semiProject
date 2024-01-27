@@ -8,22 +8,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>상품 목록</h1>
+	
+	<h1>상품 디테일</h1>
+	<img src="null"><br>
+	상품명 : <%=session.getAttribute("NAME") %><br>
+	색상 : <%=session.getAttribute("COLOR") %><br>
+	가격 : <%=session.getAttribute("PRICE") %><br>
+	
+	<%session.invalidate(); %>
+	
 	<table border=1>
 		<tr>
-			<th>상품코드</th>
-			<th>상품명</th>
-			<th>색상</th>
-			<th>가격</th>
+			<th>사이즈</th>
+			<th>재고</th>
 		</tr>
-		<c:forEach items="${list}" var="list">
+		<c:forEach items="${spec}" var="spec">
 			<tr>
-				<td>${list.pId}</td>
-				<td>${list.pName}</td>
-				<td>${list.pColor}</td>
-				<td>${list.pPrice}</td>
+				<td>${spec.pSize}</td>
+				<td>${spec.pQty}</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<form action="aProductList.do">
+		<input type="submit" value="뒤로가기">
+	</form>
 </body>
 </html>
